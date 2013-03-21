@@ -20,7 +20,7 @@ function getPosition(event){
     if(!startedDrawing){
         context.beginPath();
         context.moveTo(x, y);
-        started = true;
+        startedDrawing = true;
     }
     else{
         context.lineTo(x, y);
