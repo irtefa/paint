@@ -21,6 +21,7 @@ function getPosition(event){
     }
     else{
         context.lineTo(x, y);
+        context.strokeStyle = "#ff0000";
         context.stroke();
     }
 }
