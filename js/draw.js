@@ -4,7 +4,7 @@ var context = canvas.getContext('2d');
 var startedDrawing = false;
 
 // add event listener to check when user is clicking
-canvas.addEventListener("mousedown", getPosition, false);
+canvas.addEventListener("mousemove", getPosition, false);
 
 function getPosition(event){
     var x = event.x;
