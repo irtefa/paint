@@ -1,3 +1,5 @@
+// global variable that holds what color it is
+window.color = "red";
 // initialization
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
@@ -21,7 +23,7 @@ function getPosition(event){
     }
     else{
         context.lineTo(x, y);
-        context.strokeStyle = "#ff0000";
+        context.strokeStyle = window.color;
         context.stroke();
     }
 }
