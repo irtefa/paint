@@ -6,9 +6,11 @@ var context = canvas.getContext('2d');
 var startedDrawing = false;
 
 // add event listener to check when user is clicking
-canvas.addEventListener("mousemove", getPosition, false);
+canvas.addEventListener("mousedown", drawcanvas, false);
+canvas.addEventListener("mousemove", drawcanvas, false);
+canvas.addEventListener("mouseup", drawcanvas, false);
 
-function getPosition(event){
+function drawcanvas(event){
     var x = event.x;
     var y = event.y;
     var canvas = document.getElementById("canvas");
@@ -16,14 +18,21 @@ function getPosition(event){
     x -= canvas.offsetLeft;
     y -= canvas.offsetTop;
 
-    if(!startedDrawing){
+    // this is called when you start holding down the mouse button
+    if(event.type === "mousedown"){
         context.beginPath();
         context.moveTo(x, y);
         startedDrawing = true;
     }
-    else{
+    // this function is called when you move the mouse if you already held the mouse button
+    else if(event.type === "mousemove" && startedDrawing === true){
         context.lineTo(x, y);
         context.strokeStyle = window.color;
         context.stroke();
     }
+    // this is called when you release the mouse button
+    else if(event.type === "mouseup" && startedDrawing === true){
+        startedDrawing = false;
+    }
+
 }
